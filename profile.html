@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Profile</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <h1>Sumit_Infotech</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="profile.html">Profile</a></li>
+    </ul>
+  </nav>
+
+  <div class="profile">
+    <h2>Your Course Progress</h2>
+
+    <div>
+      <h3>JavaScript Basics</h3>
+      <progress id="jsProgress" value="0" max="100"></progress>
+      <span id="jsProgressText">0%</span>
+    </div>
+
+    <div>
+      <h3>HTML & CSS</h3>
+      <progress id="htmlcssProgress" value="0" max="100"></progress>
+      <span id="htmlcssProgressText">0%</span>
+    </div>
+  </div>
+
+  <script>
+    function loadProgress() {
+      const jsProg = parseInt(localStorage.getItem("jsProgress")) || 0;
+      const htmlcssProg = parseInt(localStorage.getItem("htmlcssProgress")) || 0;
+
+      document.getElementById("jsProgress").value = jsProg;
+      document.getElementById("jsProgressText").innerText = jsProg + "%";
+
+      document.getElementById("htmlcssProgress").value = htmlcssProg;
+      document.getElementById("htmlcssProgressText").innerText = htmlcssProg + "%";
+    }
+    loadProgress();
+  </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Courses</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .course-card {
+      border: 1px solid #ccc;
+      padding: 1em;
+      margin: 1em;
+      border-radius: 10px;
+      background: #fefefe;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      width: 250px;
+      text-align: center;
+    }
+    .course-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1em;
+    }
+    button {
+      margin-top: 10px;
+      padding: 0.5em 1em;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005f99;
+    }
+    .progress-label {
+      margin-top: 8px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>Sumit_Infotech</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="courses.html">Courses</a></li>
+    </ul>
+  </nav>
+
+  <section class="courses">
+    <h2 style="text-align:center;">Available Courses</h2>
+    <div class="course-container">
+      <div class="course-card" data-course="js">
+        <h3>JavaScript Basics</h3>
+        <a href="course_details.html?course=js">Start Learning</a><br />
+        <button onclick="checkProgress('js', this)">Check Progress</button>
+        <p class="progress-label">Progress: <span>--%</span></p>
+      </div>
+
+      <div class="course-card" data-course="htmlcss">
+        <h3>HTML & CSS</h3>
+        <a href="course_details.html?course=htmlcss">Start Learning</a><br />
+        <button onclick="checkProgress('htmlcss', this)">Check Progress</button>
+        <p class="progress-label">Progress: <span>--%</span></p>
+      </div>
+
+      <div class="course-card" data-course="react">
+        <h3>React Fundamentals</h3>
+        <a href="course_details.html?course=react">Start Learning</a><br />
+        <button onclick="checkProgress('react', this)">Check Progress</button>
+        <p class="progress-label">Progress: <span>--%</span></p>
+      </div>
+    </div>
+  </section>
+  
+
+  <footer style="text-align:center; padding: 1em;">Never stop learning.</footer>
+
+  <script>
+    const courseStorageKeys = {
+      js: "jsProgress",
+      htmlcss: "htmlcssProgress",
+      react: "reactProgress"
+    };
+
+    function checkProgress(courseId, btn) {
+      const key = courseStorageKeys[courseId];
+      const progress = parseInt(localStorage.getItem(key)) || 0;
+      const progressSpan = btn.parentElement.querySelector(".progress-label span");
+      progressSpan.textContent = `${progress}%`;
+    }
+
+    // On load: prefill progress spans with localStorage values
+    window.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".course-card").forEach(card => {
+        const courseId = card.dataset.course;
+        const key = courseStorageKeys[courseId];
+        const progress = parseInt(localStorage.getItem(key)) || 0;
+        card.querySelector(".progress-label span").textContent = `${progress}%`;
+      });
+    });
+  </script>
+</body>
+</html>

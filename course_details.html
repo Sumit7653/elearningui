@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Course Detail</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <h1>Sumit_Infotech</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="courses.html">All Courses</a></li>
+    </ul>
+  </nav>
+
+  <section class="course-detail">
+    <h2 id="courseTitle">Loading...</h2>
+    <iframe id="courseVideo" width="70%" height="360" frameborder="0" allowfullscreen></iframe>
+    
+    <div class="progress-container">
+      <p>Progress:</p>
+      <progress id="courseProgress" value="0" max="100"></progress>
+      <span id="progressText">0% completed</span>
+    </div>
+    
+    <button onclick="updateProgress()">Mark 10% Completed</button>
+  </section>
+
+  <footer> Your journey starts here.</footer>
+
+  <script>
+    const courses = {
+      js: {
+        title: "JavaScript Basics",
+        videoSrc: "https://www.youtube.com/embed/PkZNo7MFNFg",
+        storageKey: "jsProgress"
+      },
+      htmlcss: {
+        title: "HTML & CSS",
+        videoSrc: "https://www.youtube.com/embed/pQN-pnXPaVg",
+        storageKey: "htmlcssProgress"
+      },
+      react: {
+        title: "React Fundamentals",
+        videoSrc: "https://www.youtube.com/embed/bMknfKXIFA8",
+        storageKey: "reactProgress"
+      }
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const courseId = urlParams.get("course") || "js";
+    const course = courses[courseId];
+
+    document.getElementById("courseTitle").innerText = course.title;
+    document.getElementById("courseVideo").src = course.videoSrc;
+
+    let progress = parseInt(localStorage.getItem(course.storageKey)) || 0;
+    const progressBar = document.getElementById("courseProgress");
+    const progressText = document.getElementById("progressText");
+
+    progressBar.value = progress;
+    progressText.innerText = `${progress}% completed`;
+
+    function updateProgress() {
+      progress = Math.min(progress + 10, 100);
+      localStorage.setItem(course.storageKey, progress);
+      progressBar.value = progress;
+      progressText.innerText = `${progress}% completed`;
+      alert("Progress updated to " + progress + "%");
+    }
+  </script>
+</body>
+</html>

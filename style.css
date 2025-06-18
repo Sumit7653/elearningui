@@ -1,0 +1,121 @@
+body, h1, h2, p, ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: linear-gradient(to right, #004aad, #007acc);
+  color: rgb(243, 247, 243);
+}
+
+.nav-links li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.nav-links a {
+  color: rgb(249, 243, 243);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(to bottom right, #076474, #ffffff);
+  color: #031720;
+}
+
+/* Courses Section */
+.courses {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.course-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.course-card {
+  background: #79daed;
+  padding: 20px;
+  border-radius: 10px;
+  width: 280px;
+  box-shadow: 0 4px 12px rgba(215, 62, 62, 0.1);
+  transition: 0.3s;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  background: #e6c572;
+}
+
+.course-card h3 {
+  color: #c21881;
+  margin-bottom: 10px;
+}
+
+/* Course Detail Page */
+.course-detail {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px 20px;
+  background: #202725;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(61, 169, 154, 0.1);
+  text-align: center;
+}
+
+.course-detail h2 {
+  margin-bottom: 20px;
+  color: #c9ccd1;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #007acc;
+  color: rgb(223, 215, 215);
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005fa3;
+}
+
+.progress-container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+}
+
+progress {
+  width: 50%;
+  height: 20px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px 0;
+  background-color: #31414a;
+  color: rgb(230, 237, 234);
+  font-size: 0.95rem;
+}
